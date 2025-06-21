@@ -651,6 +651,12 @@ export default {
       headline: 'Cocktail bestellen',
       order_btn_label: 'COCKTAIL HERSTELLEN ({nr} ml)'
     },
+    simple_order_dialog: {
+      headline: 'Gr\u00f6\u00dfe w\u00e4hlen',
+      default_label: 'Empfohlen ({nr} ml)',
+      checker_label: 'Checker ({nr} ml)',
+      make_btn_label: 'COCKTAIL HERSTELLEN'
+    },
     make_cocktail_amount_to_produce: {
       glass_selector_label: 'Glas',
       amount_to_produce_label: 'Zu produzierende Menge'
