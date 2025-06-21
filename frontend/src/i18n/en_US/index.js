@@ -708,6 +708,12 @@ export default {
       headline: 'Order Cocktail',
       order_btn_label: 'MAKE COCKTAIL ({nr} ml)'
     },
+    simple_order_dialog: {
+      headline: 'Select size',
+      default_label: 'Recommended ({nr} ml)',
+      checker_label: 'Checker ({nr} ml)',
+      make_btn_label: 'MAKE COCKTAIL'
+    },
     make_cocktail_amount_to_produce: {
       glass_selector_label: 'Glass',
       amount_to_produce_label: 'Amount to produce'

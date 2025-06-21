@@ -604,6 +604,12 @@ export default {
       headline: 'Bestil Cocktail',
       order_btn_label: 'LAV COCKTAIL ({nr} ml)'
     },
+    simple_order_dialog: {
+      headline: 'Vælg størrelse',
+      default_label: 'Anbefalet ({nr} ml)',
+      checker_label: 'Checker ({nr} ml)',
+      make_btn_label: 'LAV COCKTAIL'
+    },
     make_cocktail_amount_to_produce: {
       glass_selector_label: 'Glas',
       amount_to_produce_label: 'Mængde der skal produceres'

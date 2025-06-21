@@ -1,6 +1,6 @@
 <template>
   <div>
-    <c-make-cocktail-dialog
+    <c-simple-order-dialog
       :recipe="orderDialog.recipe"
       v-if="!!orderDialog.recipe"
       v-model:show="orderDialog.show"
@@ -31,11 +31,11 @@
 
 <script>
 import CSimpleRecipeCard from 'components/CSimpleRecipeCard'
-import CMakeCocktailDialog from 'components/CMakeCocktailDialog'
+import CSimpleOrderDialog from 'components/CSimpleOrderDialog'
 import RecipeService from 'src/services/recipe.service'
 export default {
   name: 'CSimpleRecipeList',
-  components: { CMakeCocktailDialog, CSimpleRecipeCard },
+  components: { CSimpleOrderDialog, CSimpleRecipeCard },
   props: {
     isIngredientRecipe: {
       type: Boolean,
