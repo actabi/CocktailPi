@@ -74,5 +74,16 @@ is that you need to be able to apply that concept to your setup.
 ### This is the hardware that I've used for my machine:
 You can find the list and an installation tutorial on my website: https://cocktailpi.org/building-instructions/
 
+
+# backend-ts
+
+The experimental TypeScript backend lives in `backend-ts`. To set it up:
+
+1. Run `npm install` inside the `backend-ts` directory.
+2. Build it with `npm run build`.
+3. Start it with `npm start`.
+
+It currently coexists with the Java backend.
+
 # Community & Support
 If you have questions, want to share your setup or just want to talk about cocktail machines, feel free to join our discord server: [Click me](https://discord.gg/kGy7Up4b6S)
