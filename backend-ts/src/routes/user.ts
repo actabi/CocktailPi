@@ -1,36 +1,39 @@
 import { Router } from 'express';
-import { users } from '../controllers/data';
 import { User } from '../models/user';
+import {
+  getAllUsers,
+  createUser,
+  findUserById,
+  updateUser,
+  deleteUser
+} from '../services/userService';
 
 const router = Router();
 
-router.get('/', (_req, res) => {
+router.get('/', async (_req, res) => {
+  const users = await getAllUsers();
   res.json(users.map(u => ({ id: u.id, username: u.username, role: u.role })));
 });
 
-router.post('/', (req, res) => {
-  const user: User = { id: Date.now(), ...req.body };
-  users.push(user);
-  res.status(201).json({ id: user.id, username: user.username, role: user.role });
+router.post('/', async (req, res) => {
+  const newUser: User = await createUser(req.body);
+  res.status(201).json({ id: newUser.id, username: newUser.username, role: newUser.role });
 });
 
-router.get('/:id', (req, res) => {
-  const user = users.find(u => u.id === Number(req.params.id));
+router.get('/:id', async (req, res) => {
+  const user = await findUserById(Number(req.params.id));
   if (!user) return res.status(404).end();
   res.json({ id: user.id, username: user.username, role: user.role });
 });
 
-router.put('/:id', (req, res) => {
-  const idx = users.findIndex(u => u.id === Number(req.params.id));
-  if (idx === -1) return res.status(404).end();
-  users[idx] = { ...users[idx], ...req.body };
-  res.json({ id: users[idx].id, username: users[idx].username, role: users[idx].role });
+router.put('/:id', async (req, res) => {
+  const user = await updateUser(Number(req.params.id), req.body);
+  if (!user) return res.status(404).end();
+  res.json({ id: user.id, username: user.username, role: user.role });
 });
 
-router.delete('/:id', (req, res) => {
-  const idx = users.findIndex(u => u.id === Number(req.params.id));
-  if (idx === -1) return res.status(404).end();
-  users.splice(idx, 1);
+router.delete('/:id', async (req, res) => {
+  await deleteUser(Number(req.params.id));
   res.status(204).end();
 });
 
