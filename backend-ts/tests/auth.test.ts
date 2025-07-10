@@ -2,6 +2,7 @@ import request from 'supertest';
 import express from 'express';
 import bodyParser from 'body-parser';
 import authRoutes from '../src/routes/auth';
+import { verifyToken, JwtPayload } from '../src/utils/jwt';
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,5 +15,8 @@ describe('Auth routes', () => {
       .send({ username: 'admin', password: 'admin' });
     expect(res.status).toBe(200);
     expect(res.body.token).toBeDefined();
+    const payload = verifyToken<JwtPayload>(res.body.token);
+    expect(payload).not.toBeNull();
+    expect(payload?.username).toBe('admin');
   });
 });
