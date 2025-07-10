@@ -42,4 +42,7 @@ export async function setupSchema() {
   await database.run(
     `CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, description TEXT)`
   );
+  await database.run(
+    `CREATE TABLE IF NOT EXISTS ingredients (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)`
+  );
 }
