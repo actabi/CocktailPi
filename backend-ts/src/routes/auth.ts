@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { users } from '../controllers/data';
+import { findUserByUsername } from '../services/userService';
 
 const router = Router();
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = users.find(u => u.username === username && u.password === password);
-  if (!user) {
+  const user = await findUserByUsername(username);
+  if (!user || user.password !== password) {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
   // return dummy token
